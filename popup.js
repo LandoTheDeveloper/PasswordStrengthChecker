@@ -26,3 +26,29 @@ function checkPasswordStrength(password) {
     let strengthLevels = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
     return { strength: strengthLevels[Math.min(score, 4)] };
 }
+document.getElementById("password").addEventListener("input", function() {
+    let password = this.value;
+    let result = checkPasswordStrength(password);
+    let strengthElement = document.getElementById("strength");
+    strengthElement.textContent = `Strength: ${result.strength}`;
+
+    switch (result.strength) {
+        case "Very Weak":
+            strengthElement.style.color = "DarkRed";
+            break;
+        case "Weak":
+            strengthElement.style.color = "LightCoral";
+            break;
+        case "Moderate":
+            strengthElement.style.color = "Maroon";
+            break;
+        case "Strong":
+            strengthElement.style.color = "MediumSeaGreen";
+            break;
+        case "Very Strong":
+            strengthElement.style.color = "Green";
+            break;
+        default:
+            strengthElement.style.color = "black";
+    }
+});
