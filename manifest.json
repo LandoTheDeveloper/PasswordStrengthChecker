@@ -1,10 +1,18 @@
 {
-    "name": "Password Strength Checker",
-    "description": "Base Level Extension",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "passStrengthCheck.html",
-      "default_icon": "lock.jpg"
+  "manifest_version": 3,
+  "name": "Password Strength Checker",
+  "version": "1.0",
+  "description": "Checks password strength in real-time.",
+  "permissions": ["scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "lock.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
     }
-  }
+  ]
+}
